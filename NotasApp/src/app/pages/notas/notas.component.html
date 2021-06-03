@@ -1,0 +1,80 @@
+<h3 class="col text-center">Aplicación para notas To-do</h3>
+<hr>
+
+<div>
+    <div class="col text-left">
+      <button routerLink="/nuevo" type="button" data-toggle="modal" data-target="#myModal" 
+              class="btn btn-primary">
+        <i class="fa fa-plus"></i>
+        Agregar
+      </button>
+    </div>
+  </div>
+<br>
+<div class="container">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Nueva Nota</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form (ngSubmit)="guardar( f )"
+                #f="ngForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nota ID</label>
+                        <input type="text"
+                        class="form-control"
+                        placeholder="Nota ID"
+                        [(ngModel)]="nota.id"
+                        name="id"
+                        disabled="disabled">
+                        <small class="form-text text-muted">Este campo es autogenerado</small>
+                    </div>
+                        <table>
+                            <tr>
+                                <td>Nota:</td>
+                                <td><textarea cols="40" rows="5" name="texto" maxlength="300"></textarea></td>
+                            </tr>
+                        </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i>
+                    Guardar</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" *ngFor="let nota of notas; let i = index" id="info">
+    <div class="card-footer">
+        <div class="flex-sb-m w-full p-t-3 p-b-24">
+            <div class="container-login100-form-btn m-t-10">
+                <td>{{nota.creationDate}}</td>
+            </div>
+            <div class="container-login100-form-btn m-t-10" id="botones">
+                <button class="btn btn-info mr-1" [routerLink]="['/', nota.id ]">
+                    <i class="fa fa-pen"></i>
+                </button>
+            
+                <button class="btn btn-danger" (click)="borrarNota( nota, i)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <td>{{nota.id}}</td>
+        <br>
+        <td>{{nota.nota}}</td>
+        <br>
+    </div>
+</div>

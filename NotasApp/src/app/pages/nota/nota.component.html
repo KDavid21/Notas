@@ -1,0 +1,21 @@
+<p>Lista de Notas</p>
+<table>
+    <tr>
+        <td>Id</td>
+        <br>
+        <td>Title</td>
+        <br>
+        <td>Nota</td>
+        <br>
+        <td>CreationDate</td>
+    </tr>
+    <tr *ngFor="let not of notaList">
+        <td>{{not.id}}</td>
+        <br>
+        <td>{{not.title}}</td>
+        <br>
+        <td>{{not.nota}}</td>
+        <br>
+        <td>{{not.creationDate}}</td>
+    </tr>
+</table>
